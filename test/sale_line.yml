@@ -21,7 +21,7 @@
     product_uos_qty: 1
     product_uom: product.product_uom_unit
     price_unit: 30.0
-    type: make_to_order
+    type: "make_to_order"
     dropship: true
 
 -
