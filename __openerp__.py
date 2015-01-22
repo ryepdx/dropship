@@ -25,7 +25,7 @@
  "category": "Generic Modules/Purchase",
  "depends": ["purchase", "sale_stock"],
  "description": "Allows drop-shipping products from suppliers to customers.",
- "test": ['test/sale.xml', 'test/sale.yml'],
+ "test": ['test/setup.xml', 'test/product.yml'],
  'installable': True
 }
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
