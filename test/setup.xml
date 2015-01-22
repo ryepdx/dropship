@@ -25,6 +25,7 @@
             <field name="partner_id" ref="res_partner_company_1"/>
             <field name="parent_id" ref="base.main_company"/>
             <field name="name">HOTP Co.</field>
+            <field name="manufacturing_lead">0</field>
         </record>
 
         <!-- Users -->

@@ -1,0 +1,46 @@
+-
+  Create a sales order...
+-
+  !record {model: sale.order, id: test_sale_order2}:
+    name: "Test SO"
+    company_id: stock.res_company_2
+    partner_id: partner_demo
+    partner_invoice_id: partner_demo
+    partner_shipping_id: partner_demo
+    shop_id: sale.sale_shop_1
+    pricelist_id: product.list0
+
+-
+  ...with a sales order line we force dropshipping on...
+-
+  !record {model: sale.order.line, id: test_sale_order2_line}:
+    order_id: test_sale_order2
+    name: "Dropshipped Product"
+    product_id: product.product_product_6
+    product_uom_qty: 1
+    product_uos_qty: 1
+    product_uom: product.product_uom_unit
+    price_unit: 30.0
+    type: make_to_order
+    dropship: true
+
+-
+  ...and confirm it.
+-
+  !python {model: sale.order}: |
+    self.action_button_confirm(cr, uid, [ref('test_sale_order2')], context=context)
+
+-
+  ...and run the procurement scheduler...
+-
+  !python {model: procurement.order}: |
+    self.run_scheduler(cr, uid)
+
+-
+  Make sure that a purchase order was created to ship the product from the supplier to the customer.
+-
+  !python {model: purchase.order}: |
+    orders = self.browse(cr, uid, self.search(cr, uid, [('sale_id', '=', ref('test_sale_order2'))], context=context),
+      context=context)
+    assert orders, "No purchase order was created!"
+    assert orders[0].dest_address_id.id == orders[0].sale_id.partner_shipping_id.id, "Not dropshipping to customer!"

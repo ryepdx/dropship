@@ -23,9 +23,9 @@
  "author": "RyePDX LLC",
  "website": "http://www.ryepdx.com",
  "category": "Generic Modules/Purchase",
- "depends": ["purchase", "sale_stock"],
+ "depends": ["purchase", "sale_stock", "mrp"],
  "description": "Allows drop-shipping products from suppliers to customers.",
- "test": ['test/setup.xml', 'test/product.yml'],
+ "test": ['test/setup.xml', 'test/product.yml', 'test/sale_line.yml'],
  'installable': True
 }
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
