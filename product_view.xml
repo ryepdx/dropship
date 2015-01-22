@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<openerp>
+        <data>
+            <record id="dropship_product_view_form" model="ir.ui.view">
+                <field name="name">dropship.product.view.form</field>
+                <field name="model">product.product</field>
+                <field name="inherit_id" ref="product.product_normal_form_view" />
+                <field name="arch" type="xml">
+                    <xpath expr="//group[@name='procurement']" position="after">
+                        <group>
+                            <field name="dropship" on_change="onchange_dropship(dropship)" />
+                        </group>
+                    </xpath>
+                </field>
+            </record>
+
+            <record id="dropship_product_view_methods_form" model="ir.ui.view">
+                <field name="name">dropship.product.view.form</field>
+                <field name="model">product.product</field>
+                <field name="inherit_id" ref="procurement.product_form_view_procurement_button" />
+                <field name="arch" type="xml">
+                    <xpath expr="//field[@name='supply_method']" position="attributes">
+                        <attribute name="on_change">onchange_supply_method(supply_method)</attribute>
+                    </xpath>
+                    <xpath expr="//field[@name='procure_method']" position="attributes">
+                        <attribute name="on_change">onchange_procure_method(procure_method)</attribute>
+                    </xpath>
+                </field>
+            </record>
+        </data>
+</openerp>

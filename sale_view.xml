@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<openerp>
+        <data>
+            <record model="ir.ui.view" id="dropship_sale_order_form">
+                <field name="name">dropship.sale.order.form</field>
+                <field name="model">sale.order</field>
+                <field name="inherit_id" ref="sale.view_order_form" />
+                <field name="arch" type="xml">
+                    <xpath expr="//field[@name='order_line']//field[@name='address_allotment_id']" position="after">
+                        <field name="dropship" />
+                    </xpath>
+                </field>
+            </record>
+        </data>
+</openerp>

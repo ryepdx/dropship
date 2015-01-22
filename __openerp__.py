@@ -25,6 +25,7 @@
  "category": "Generic Modules/Purchase",
  "depends": ["purchase", "sale_stock", "mrp"],
  "description": "Allows drop-shipping products from suppliers to customers.",
+ "data": ["product_view.xml", "sale_view.xml"],
  "test": ['test/setup.xml', 'test/product.yml', 'test/sale_line.yml', 'test/no_suppliers.yml'],
  'installable': True
 }
