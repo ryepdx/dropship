@@ -16,7 +16,6 @@ class purchase_order(orm.Model):
 
     def action_picking_create(self, cr, uid, ids, context=None):
         res = super(purchase_order, self).action_picking_create(cr, uid, ids, context=context)
-        import pdb; pdb.set_trace()
         picking_pool = self.pool.get('stock.picking')
 
         for purchase in self.browse(cr, uid, ids, context=context):
